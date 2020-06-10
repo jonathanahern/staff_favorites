@@ -5,12 +5,17 @@
     <% application_name = ShopifyApp.configuration.application_name %>
     <title><%= application_name %></title>
     <%= stylesheet_link_tag 'application' %>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@shopify/polaris@4.25.0/styles.min.css"
+    />
     <% if ShopifyApp.use_webpacker? %>
       <%= javascript_pack_tag 'application' %>
     <% else %>
       <%= javascript_include_tag 'application' %>
     <% end %>
-    <%= javascript_pack_tag 'hello_react' %>
+    <%#= javascript_pack_tag 'hello_react' %>
+    <%= javascript_pack_tag 'staff_list' %>
     <%= csrf_meta_tags %>
   </head>
 

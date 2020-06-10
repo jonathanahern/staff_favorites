@@ -4,6 +4,7 @@
   "dependencies": {
     "@babel/preset-react": "^7.10.1",
     "@rails/webpacker": "5.1.1",
+    "@shopify/polaris": "^4.25.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
