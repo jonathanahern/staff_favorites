@@ -20,16 +20,18 @@ class StaffList extends Component {
     
     return (
       <ResourceList.Item id={id} accessibilityLabel={`details for ${name} `}>
-        <Stack>
-          <img src={profile_url} style={{ width: "60px" }} />
-          <h3>
-            <TextStyle variation="strong">
-              {" "}
-              {name}
-              {title}{" "}
-            </TextStyle>
-          </h3>
-        </Stack>
+        <a href={Routes.edit_api_v1_employee_path({ id: id })}>
+          <Stack>
+            <img src={profile_url} style={{ width: "60px" }} />
+            <h3>
+              <TextStyle variation="strong">
+                {" "}
+                {name}
+                {title}{" "}
+              </TextStyle>
+            </h3>
+          </Stack>
+        </a>
       </ResourceList.Item>
     );
   };
@@ -74,6 +76,6 @@ export default StaffList;
 
 document.addEventListener("DOMContentLoaded", () => {
   const node = document.getElementById("staff-list");
-  const data = JSON.parse(node.getAttribute("data"));
+  const data = node === null ? null : JSON.parse(node.getAttribute("data"));
   ReactDOM.render(<StaffList {...data} />, node);
 });

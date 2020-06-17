@@ -11,5 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require js-routes
 //= require activestorage
 //= require_tree .
+
+console.log( 'routes', Routes)
