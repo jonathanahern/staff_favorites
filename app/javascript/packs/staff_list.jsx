@@ -77,5 +77,7 @@ export default StaffList;
 document.addEventListener("DOMContentLoaded", () => {
   const node = document.getElementById("staff-list");
   const data = node === null ? null : JSON.parse(node.getAttribute("data"));
-  ReactDOM.render(<StaffList {...data} />, node);
+  if (data !== null) {
+    ReactDOM.render(<StaffList {...data} />, node);
+  }
 });

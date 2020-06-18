@@ -42,15 +42,13 @@ class Api::V1::EmployeesController < ShopifyApp::AuthenticatedController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
-    respond_to do |format|
-      if @employee.update(employee_params)
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
-        format.json { render :show, status: :ok, location: @employee }
-      else
-        format.html { render :edit }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
-      end
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      render json: @employee
+    else
+      render json: @employee.errors.full_messages, status: 401
     end
+
   end
 
   # DELETE /employees/1
@@ -77,6 +75,7 @@ class Api::V1::EmployeesController < ShopifyApp::AuthenticatedController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.fetch(:employee, {})
+      params.require(:employee).permit(:name, :job_title, :description, :profile_url)
     end
+
 end
